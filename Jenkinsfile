@@ -16,11 +16,9 @@ pipeline {
     stages {
             stage('TerraformInit'){
             steps {
-                dir('lambda_sha256_update_terraform/'){
                     sh "terraform init -input=false"
                     sh "echo \$PWD"
                     sh "whoami"
-                }
             }
         }
 }
