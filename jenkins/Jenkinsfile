@@ -40,7 +40,7 @@ pipeline {
         }
             stage('TerraformPlan'){
             steps {
-                dir('jenkins-terraform-pipeline/ec2_pipeline/'){
+                dir('jenkins/'){
                     script {
                         try {
                             bat "terraform workspace new ${params.WORKSPACE}"
