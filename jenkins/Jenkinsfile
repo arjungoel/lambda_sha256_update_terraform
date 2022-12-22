@@ -43,9 +43,9 @@ pipeline {
                 dir('jenkins/'){
                     script {
                         try {
-                            bat "terraform workspace new ${params.WORKSPACE}"
+                            bat "terraform workspace new $params.WORKSPACE"
                         } catch (err) {
-                            bat "terraform workspace select ${params.WORKSPACE}"
+                            bat "terraform workspace select $params.WORKSPACE"
                         }
                         bat "terraform plan -var 'access_key=$ACCESS_KEY' -var 'secret_key=$SECRET_KEY' -out tfplan"
                     }
