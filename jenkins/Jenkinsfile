@@ -47,7 +47,7 @@ pipeline {
                         } catch (err) {
                             bat "terraform workspace select $params.WORKSPACE"
                         }
-                        bat "terraform plan -var 'access_key=$ACCESS_KEY' -var 'secret_key=$SECRET_KEY' -out tfplan"
+                        sh "terraform plan -var 'access_key=$ACCESS_KEY' -var 'secret_key=$SECRET_KEY' -out tfplan"
                     }
                 }
             }
