@@ -23,8 +23,7 @@ pipeline {
             }
         }
 }
-    }
-    stage('TerraformFormat'){
+            stage('TerraformFormat'){
             steps {
                 dir('jenkins/'){
                     bat "terraform fmt -list=true -write=false -diff=true -check=true"
@@ -32,10 +31,11 @@ pipeline {
             }
         }
 
-    stage('TerraformValidate'){
-        steps {
-            dir('jenkins/'){
-                bat "terraform validate"
+            stage('TerraformValidate'){
+            steps {
+                dir('jenkins/'){
+                    bat "terraform validate"
+                }
             }
         }
     }
