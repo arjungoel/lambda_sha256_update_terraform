@@ -40,7 +40,7 @@ pipeline {
         }
             stage('TerraformPlan'){
             steps {
-                dir('jenkins/'){
+                dir('lambda_sha256_update_terraform/'){
                     script {
                         try {
                             bat "terraform workspace new $params.WORKSPACE"
