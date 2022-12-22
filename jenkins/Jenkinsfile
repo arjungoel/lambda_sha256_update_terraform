@@ -24,4 +24,19 @@ pipeline {
         }
 }
     }
+    stage('TerraformFormat'){
+            steps {
+                dir('jenkins/'){
+                    bat "terraform fmt -list=true -write=false -diff=true -check=true"
+                }
+            }
+        }
+
+    stage('TerraformValidate'){
+        steps {
+            dir('jenkins/'){
+                bat "terraform validate"
+            }
+        }
+    }
 }
