@@ -32,7 +32,17 @@ pipeline {
             steps {
                 dir('jenkins/'){
                     bat "terraform validate"
-                    bat sh "terraform plan -input=false -var='aws_access_key=$ACCESS_KEY' -var='aws_secret_access_key=$SECRET_KEY' -out tfplan"
+                }
+            }
+        }
+        stage('TerraformPlan'){
+            steps {
+                dir('jenkins/'){
+                    script {
+                        bat "terraform plan -var 'access_key=$ACCESS_KEY' -var 'secret_key=$SECRET_KEY' \
+                        -out terraform.tfplan;echo \$? > status"
+                        stash name: "terraform-plan", includes: "terraform.tfplan"
+                    }
                 }
             }
         }
