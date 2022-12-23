@@ -32,7 +32,7 @@ pipeline {
             steps {
                 dir('jenkins/'){
                     bat "terraform validate"
-                    bat "echo $ACCESS_KEY"
+                    bat 'terraform plan -var="aws_access_key=$ACCESS_KEY" -var="aws_secret_access_key=$SECRET_KEY"'
                 }
             }
         }
