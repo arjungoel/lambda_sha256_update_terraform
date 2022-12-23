@@ -11,6 +11,13 @@ pipeline {
         SECRET_KEY = credentials('AWS_SECRET_ACCESS_KEY')
     }
     stages {
+            stage('checkout'){
+            steps{
+                script{
+                    checkout
+                }
+            }
+        }
             stage('TerraformInit'){
             steps {
                 dir('jenkins/'){
