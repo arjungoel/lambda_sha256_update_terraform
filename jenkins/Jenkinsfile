@@ -39,8 +39,7 @@ pipeline {
             steps {
                 dir('jenkins/'){
                     script {
-                        bat "terraform plan -var 'access_key=$ACCESS_KEY' -var 'secret_key=$SECRET_KEY' \
-                        -out terraform.tfplan;echo \$? > status"
+                        bat "terraform plan -var 'access_key=$ACCESS_KEY' -var 'secret_key=$SECRET_KEY' -out tfplan"
                         stash name: "terraform-plan", includes: "terraform.tfplan"
                     }
                 }
